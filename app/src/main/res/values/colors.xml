@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keep these two: the default project theme uses them -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- App colors -->
+    <color name="primary">#3F51B5</color>
+    <color name="primary_light">#E8EAF6</color>
+    <color name="background">#F7F8FC</color>
+    <color name="text_main">#1F2335</color>
+    <color name="text_secondary">#6B7085</color>
+    <color name="divider">#E3E5EE</color>
+
+    <!-- Status colors -->
+    <color name="done_green">#2E7D32</color>
+    <color name="done_green_light">#E8F5E9</color>
+    <color name="pending_orange">#EF6C00</color>
+    <color name="pending_orange_light">#FFF3E0</color>
+    <color name="overdue_red">#D32F2F</color>
+</resources>
