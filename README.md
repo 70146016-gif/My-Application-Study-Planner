@@ -9,8 +9,8 @@ Mobile Application Development (CS02310), Section W — The University of Lahore
 
 | Member | Role in Task 1 |
 | --- | --- |
-| Ahmad Najeeb (70146016) | Project setup, XML layouts, Java screens and sample data, testing |
-| Ishmal Wajid (70146012) | Screenshots, demo recording |
+| Ahmad Najeeb (70146016) | Project setup, XML layouts, Java screens and sample data, testing, screenshots |
+| Ishmal Wajid (70146012) | Demo recording |
 | Arham Tariq (70147460) | README, `task-1` tag, link checks, report |
 
 ## Features (Task 1 — UI and layouts)
