@@ -3,6 +3,7 @@ package com.example.myapplicationstudyplanner;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,6 +19,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private static final String KEY_TITLE = "screen_title";
+    private MaterialToolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Use our toolbar as the title bar so setTitle(...) shows on it
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        // Our title bar. The title is set on the toolbar directly, because the XML
+        // already gives it a title and Android then ignores Activity.setTitle().
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
@@ -44,9 +49,16 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             showScreen(R.id.nav_home); // first launch: open Home
         } else {
-            // After rotating, Android restores the fragment; just restore the title
-            setTitle(titleFor(bottomNav.getSelectedItemId()));
+            // After rotating, Android restores the fragment; restore the saved title
+            toolbar.setTitle(savedInstanceState.getCharSequence(KEY_TITLE, "Today"));
         }
+    }
+
+    /** Remember the current title so it survives rotation. */
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(KEY_TITLE, toolbar.getTitle());
     }
 
     private void showScreen(int itemId) {
@@ -63,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             screen = new HomeFragment();
         }
 
-        setTitle(titleFor(itemId));
+        toolbar.setTitle(titleFor(itemId));
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, screen)
